@@ -7,10 +7,10 @@ import requests
 from typing import Dict, Any
 from config import config
 
-class BochaSearchAgent:
+class OnlineSearchAgent:
     """博查搜索Agent - 调用博查API进行网页搜索"""
     
-    name = "BochaSearchAgent"
+    name = "OnlineSearchAgent"
     instructions = "调用博查API进行网页搜索，并将结果作为外部信息提供给AI参考"
     
     def __init__(self):
@@ -18,52 +18,52 @@ class BochaSearchAgent:
         self.api_key = None
         self.api_url = "https://api.bochaai.com/v1/web-search"
         
-        # 方法1: 从全局config对象读取（优先级最高）
+        # 1: 从全局config对象读取
         try:
-            if hasattr(config, 'bocha_search'):
-                bocha_config = config.bocha_search
-                if hasattr(bocha_config, 'API_KEY') and bocha_config.API_KEY:
-                    self.api_key = bocha_config.API_KEY
-                if hasattr(bocha_config, 'Url') and bocha_config.Url:
-                    self.api_url = bocha_config.Url
+            if hasattr(config, 'online_search'):
+                bocha_config = config.online_search
+                if hasattr(bocha_config, 'Bocha_API_KEY') and bocha_config.Bocha_API_KEY:
+                    self.api_key = bocha_config.Bocha_API_KEY
+                if hasattr(bocha_config, 'Bocha_Url') and bocha_config.Bocha_Url:
+                    self.api_url = bocha_config.Bocha_Url
         except Exception as e:
             print(f"[WARN] 从全局配置读取博查API配置时出错: {e}")
             
-        # 方法2: 直接从根目录config.json文件读取（备选方案）
+        # 2: 直接从根目录config.json文件读取
         if not self.api_key:
             try:
                 config_path = Path(__file__).parent.parent.parent / "config.json"
                 if config_path.exists():
                     with open(config_path, 'r', encoding='utf-8') as f:
                         config_data = json.load(f)
-                    if 'bocha_search' in config_data and 'API_KEY' in config_data['bocha_search']:
-                        self.api_key = config_data['bocha_search']['API_KEY']
-                    if 'bocha_search' in config_data and 'Url' in config_data['bocha_search']:
-                        self.api_url = config_data['bocha_search']['Url']
+                    if 'online_search' in config_data and 'Bocha_API_KEY' in config_data['online_search']:
+                        self.api_key = config_data['online_search']['Bocha_API_KEY']
+                    if 'online_search' in config_data and 'Bocha_Url' in config_data['online_search']:
+                        self.api_url = config_data['online_search']['Bocha_Url']
             except Exception as e:
                 print(f"[WARN] 从config.json文件读取博查API配置时出错: {e}")
         
-        # 方法3: 从环境变量读取（最低优先级）
+        # 3: 从环境变量读取
         if not self.api_key:
             env_api_key = os.getenv("BOCHA_API_KEY")
             if env_api_key:
                 self.api_key = env_api_key
             
-        # 如果仍然没有API密钥，使用默认值（用于测试）
+        # 如果仍然没有API密钥，使用默认值
         if not self.api_key:
             self.api_key = "your-bocha-api-key-here"
 
-        # 从配置中获取count，如果未配置则默认为5
+        # 从配置中获取count，如果未配置则默认为5（可以根据自己需求调整）
         self.count = 5
         try:
-            if hasattr(config, 'bocha_search') and hasattr(config.bocha_search, 'count'):
-                self.count = int(config.bocha_search.count)
+            if hasattr(config, 'online_search') and hasattr(config.online_search, 'Bocha_count'):
+                self.count = int(config.online_search.Bocha_count)
         except (ValueError, TypeError) as e:
             print(f"[WARN] 从全局配置读取博查count配置时出错，将使用默认值5: {e}")
         except Exception as e:
             print(f"[WARN] 从全局配置读取博cha count配置时出现未知错误: {e}")
             
-        print(f"[OK] BochaSearchAgent初始化完成，API URL: {self.api_url}, Count: {self.count}")
+        print(f"[OK] OnlineSearchAgent初始化完成，API URL: {self.api_url}, Count: {self.count}")
     
     async def search(self, query: str) -> Dict[str, Any]:
         """执行博查搜索"""
@@ -166,8 +166,8 @@ class BochaSearchAgent:
 
 
 def create_bocha_search_agent():
-    """创建BochaSearchAgent实例"""
-    return BochaSearchAgent()
+    """创建OnlineSearchAgent实例"""
+    return OnlineSearchAgent()
 
 
 def validate_agent_config():
@@ -178,8 +178,8 @@ def validate_agent_config():
         
         # 方法1: 从全局配置读取
         try:
-            if hasattr(config, 'bocha_search') and hasattr(config.bocha_search, 'API_KEY'):
-                api_key = config.bocha_search.API_KEY
+            if hasattr(config, 'online_search') and hasattr(config.online_search, 'Bocha_API_KEY'):
+                api_key = config.online_search.Bocha_API_KEY
         except Exception:
             pass
             
@@ -190,8 +190,8 @@ def validate_agent_config():
                 if config_path.exists():
                     with open(config_path, 'r', encoding='utf-8') as f:
                         config_data = json.load(f)
-                    if 'bocha_search' in config_data and 'API_KEY' in config_data['bocha_search']:
-                        api_key = config_data['bocha_search']['API_KEY']
+                    if 'online_search' in config_data and 'Bocha_API_KEY' in config_data['online_search']:
+                        api_key = config_data['online_search']['Bocha_API_KEY']
             except Exception:
                 pass
         
