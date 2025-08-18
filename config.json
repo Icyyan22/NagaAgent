@@ -89,7 +89,7 @@
     "password": " "
   },
   "online_search": {
-    "Bocha_API_KEY": "sk-83f5c6b400e24b4ba4dc05e0cd7dff35",
+    "Bocha_API_KEY": "-",
     "Bocha_Url": "https://api.bochaai.com/v1/web-search",
     "Bocha_count": 5
   }
