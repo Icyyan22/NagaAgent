@@ -1,8 +1,14 @@
 {
+  "name": "BochaSearchAgent",
+  "displayName": "博查搜索",
   "version": "1.0.0",
   "author": "Naga",
   "agentType": "mcp",
+  "description": "调用博查API进行网页搜索，返回相关实时信息",
   "entryPoint": {
+    "module": "mcpserver.agent_online_search.online_search_agent",
+    "class": "OnlineSearchAgent",
+    "function": "create_online_search_agent"
   },
   "factory": {
     "validate_config": "validate_agent_config",
@@ -16,6 +22,7 @@
     "invocationCommands": [
       {
         "command": "search",
+        "description": "执行网页搜索",
         "example": "{\"tool_name\": \"search\", \"query\": \"天空为什么是蓝色的？\"}"
       }
     ]
