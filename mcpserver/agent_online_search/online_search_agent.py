@@ -1,5 +1,5 @@
 
-# bocha_search_agent.py - 博查搜索Agent
+# online_search_agent.py - 联网搜索Agent
 import json
 import os
 from pathlib import Path

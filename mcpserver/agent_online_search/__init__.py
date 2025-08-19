@@ -1,6 +1,6 @@
 # __init__.py - 博查搜索Agent包初始化
 """
-博查搜索Agent - 调用博查API进行网页搜索
+联网搜索Agent - 调用博查API进行网页搜索
 
 功能特性：
 - 网页搜索功能
@@ -23,4 +23,4 @@ __all__ = [
 
 __version__ = '1.0.0'
 __author__ = 'Naga搜索模块'
-__description__ = '博查搜索MCP Agent'
+__description__ = '实时搜索MCP Agent'
