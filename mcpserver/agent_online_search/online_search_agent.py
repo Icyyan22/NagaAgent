@@ -165,7 +165,7 @@ class OnlineSearchAgent:
             }, ensure_ascii=False)
 
 
-def create_bocha_search_agent():
+def create_online_search_agent():
     """创建OnlineSearchAgent实例"""
     return OnlineSearchAgent()
 

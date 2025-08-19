@@ -1,16 +1,16 @@
 {
-  "name": "BochaSearchAgent",
-  "displayName": "博查搜索Agent",
+  "name": "OnlineSearchAgent",
+  "displayName": "联网搜索Agent",
   "version": "1.0.0",
-  "description": "调用博查搜索API，返回全网最新相关实时信息",
+  "description": "调用联网搜索API，返回全网最新相关实时信息",
   "author": "Naga",
   "agentType": "mcp",
   "entryPoint": {
-    "module": "mcpserver.agent_bocha_search.bocha_search_agent",
-    "class": "BochaSearchAgent"
+    "module": "mcpserver.agent_online_search.online_search_agent",
+    "class": "OnlineSearchAgent"
   },
   "factory": {
-    "create_instance": "create_bocha_search_agent",
+    "create_instance": "create_online_search_agent",
     "validate_config": "validate_agent_config",
     "get_dependencies": "get_agent_dependencies"
   },
