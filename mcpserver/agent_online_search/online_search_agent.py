@@ -8,7 +8,7 @@ from typing import Dict, Any
 from config import config
 
 class OnlineSearchAgent:
-    """博查搜索Agent - 调用博查API进行网页搜索"""
+    """联网搜索Agent - 调用博查API进行网页搜索"""
     
     name = "OnlineSearchAgent"
     instructions = "调用博查API进行网页搜索，并将结果作为外部信息提供给AI参考"
@@ -66,7 +66,7 @@ class OnlineSearchAgent:
         print(f"[OK] OnlineSearchAgent初始化完成，API URL: {self.api_url}, Count: {self.count}")
     
     async def search(self, query: str) -> Dict[str, Any]:
-        """执行博查搜索"""
+        """执行联网搜索"""
         try:
             payload = json.dumps({
                 "query": query,

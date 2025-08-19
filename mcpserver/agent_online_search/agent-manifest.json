@@ -22,7 +22,7 @@
     "invocationCommands": [
       {
         "command": "search",
-        "description": "执行博查搜索。\n- `tool_name`: 固定为 `search`\n- `query`: 搜索内容（必需）\n**调用示例:**\n```json\n{\"tool_name\": \"search\", \"query\": \"天空为什么是蓝色的？\"}```",
+        "description": "执行联网搜索。\n- `tool_name`: 固定为 `search`\n- `query`: 搜索内容（必需）\n**调用示例:**\n```json\n{\"tool_name\": \"search\", \"query\": \"天空为什么是蓝色的？\"}```",
         "example": "{\"tool_name\": \"search\", \"query\": \"天空为什么是蓝色的？\"}"
       }
     ]
