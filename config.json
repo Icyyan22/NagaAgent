@@ -8,7 +8,7 @@
     "save_prompts": true
   },
   "api": {
-    "api_key": "key",
+    "api_key": "your-api-key",
     "base_url": "https://api.deepseek.com/v1",
     "model": "deepseek-chat",
     "temperature": 0.7,
@@ -75,7 +75,7 @@
     "qos": 1
   },
   "ui": {
-    "user_name": "一介庸人",
+    "user_name": "用户",
     "bg_alpha": 0.59,
     "window_bg_alpha": 128,
     "mac_btn_size": 36,
@@ -89,7 +89,7 @@
     "password": " "
   },
   "online_search": {
-    "Bocha_API_KEY": "sk-83f5c6b400e24b4ba4dc05e0cd7dff35",
+    "Bocha_API_KEY": "your-api-key",
     "Bocha_Url": "https://api.bochaai.com/v1/web-search",
     "Bocha_count": 5
   }
