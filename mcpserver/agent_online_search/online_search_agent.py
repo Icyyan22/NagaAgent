@@ -1,5 +1,3 @@
-
-# online_search_agent.py - 联网搜索Agent
 import json
 import os
 from pathlib import Path
@@ -8,7 +6,6 @@ from typing import Dict, Any
 from config import config
 
 class OnlineSearchAgent:
-    """联网搜索Agent - 调用博查API进行网页搜索"""
     
     name = "OnlineSearchAgent"
     instructions = "调用博查API进行网页搜索，并将结果作为外部信息提供给AI参考"
@@ -66,7 +63,6 @@ class OnlineSearchAgent:
         print(f"[OK] OnlineSearchAgent初始化完成，API URL: {self.api_url}, Count: {self.count}")
     
     async def search(self, query: str) -> Dict[str, Any]:
-        """执行联网搜索"""
         try:
             payload = json.dumps({
                 "query": query,
@@ -165,7 +161,6 @@ class OnlineSearchAgent:
             }, ensure_ascii=False)
 
 
-def create_online_search_agent():
     """创建OnlineSearchAgent实例"""
     return OnlineSearchAgent()
 
